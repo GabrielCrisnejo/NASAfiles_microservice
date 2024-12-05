@@ -8,13 +8,13 @@ services:
     volumes:
       - .:/workdir
     ports:
-      - "8000:8000"
+      - "8080:8080"
 
   debug:
     <<: *appbase
     container_name: nasa-download-debug
     command: >
-      bash -c "python -Xfrozen_modules=off -m debugpy --wait-for-client --listen 0.0.0.0:5678 -m uvicorn --app-dir /workdir/app main:app --reload --host 0.0.0.0 --port 8000"
+      bash -c "python -Xfrozen_modules=off -m debugpy --wait-for-client --listen 0.0.0.0:5678 -m uvicorn --app-dir /workdir/app main:app --reload --host 0.0.0.0 --port 8080"
     ports:
-      - "8000:8000"
+      - "8080:8080"
       - "5678:5678"
